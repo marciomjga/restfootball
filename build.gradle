@@ -1,0 +1,40 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'de.planerio'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// spring dependencies
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.4.RELEASE'
+	// h2 dependency
+	compile 'com.h2database:h2:1.4.200'
+	// springfox dependencies (api documentation)
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+	// orika mapper for easier classes conversions
+	compile group: 'ma.glasnost.orika', name: 'orika-core', version: '1.5.4'
+	// lombok to reduce boiler plate code
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+	annotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+	// log4j for logging
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.0'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.0'
+}
+
+test {
+	useJUnitPlatform()
+}
